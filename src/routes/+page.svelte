@@ -6,34 +6,34 @@
     {title: "Maybe?", inside: "Ajjj", money:true, open:false}]
 </script>
 
-<style lang="sass">
+<style lang="scss">
     .block{
-        height: 100px
-        width: 100%
-        text-align: center
-        background-color: gray
-        display: flex 
-        flex-direction: column
-        border-style: solid
-        border-color: black
-        border-radius: 15px
-        border-width: 2px
-        transition: 0.3s
-        margin-top: 10px
+        height: 100px;
+        width: 100%;
+        text-align: center;
+        background-color: gray;
+        display: flex ;
+        flex-direction: column;
+        border-style: solid;
+        border-color: black;
+        border-radius: 15px;
+        border-width: 2px;
+        transition: 0.3s;
+        margin-top: 10px;
     }
     .inside{
-        box-sizing: border-box
-        width: 98%
-        margin: auto
-        text-align: center
-        background-color: gainsboro 
-        padding: 10px
-        white-space: pre-line
+        box-sizing: border-box;
+        width: 98%;
+        margin: auto;
+        text-align: center;
+        background-color: gainsboro; 
+        padding: 10px;
+        white-space: pre-line;
 
-        border-style: solid
-        border-color: rgb(110, 110, 110)
-        border-radius: 0px 0px 10px 10px
-        border-width: 0px 2px 2px 2px
+        border-style: solid;
+        border-color: rgb(110, 110, 110);
+        border-radius: 0px 0px 10px 10px;
+        border-width: 0px 2px 2px 2px;
     }
 </style>
 
