@@ -7,13 +7,18 @@
 </script>
 
 <style lang="scss">
-    .block{
-        
-        height: 50px;
-        width: 100%;
+    
+    @mixin start{
         text-align: center;
-        background-color: gray;
-        display: flex ;
+    }
+    .block{
+        &:hover{
+            background-color: #6b4141;
+        }
+        @include start;    
+        width: 100%;
+        background-color: #a1a1a1;
+        display: flex;
         flex-direction: column;
         border-style: solid;
         border-color: black;
@@ -21,17 +26,15 @@
         border-width: 2px;
         transition: 0.3s;
         margin-top: 10px;
-    }
-    .block:hover{
-        background-color: rgb(136, 136, 136);
+        padding: 10px;
     }
     .inside{
+        @include start;
         overflow: hidden;
         display: flex;
         box-sizing: border-box;
         width: 98%;
         margin: auto;
-        text-align: center;
         background-color: gainsboro; 
         padding: 10px;
         white-space: pre-line;
