@@ -6,13 +6,14 @@
     let open = false;
 </script>
 
-<style lang="scss">
+<style lang=scss>
+    $default-color: #858585;
     .block{
         
         height: 50px;
         width: 100%;
         text-align: center;
-        background-color: gray;
+        background-color: $default-color;
         display: flex ;
         flex-direction: column;
         border-style: solid;
@@ -37,11 +38,12 @@
         white-space: pre-line;
 
         border-style: solid;
-        border-color: rgb(110, 110, 110);
+        border-color: black;
         border-radius: 0px 0px 10px 10px;
         border-width: 0px 2px 2px 2px;
         justify-content: space-evenly;
     }
+    
 </style>
 
 
