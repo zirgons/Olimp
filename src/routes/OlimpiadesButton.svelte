@@ -1,6 +1,6 @@
 <script>
-	import { slide } from 'svelte/transition';
-    import { fly } from 'svelte/transition';
+	import { slide, fly, fade } from 'svelte/transition';
+    
 
 	export let olimpiadesData = {"title": "title", "inside": "inside"};
     let open = false;
@@ -47,17 +47,17 @@
 </style>
 
 
-
-<button class="block" on:click={() => open=!open}>
-    <h2>{olimpiadesData.title}</h2>
-</button>
-<div>
-{#if open}
-<div class="inside" transition:slide={{duration:300, delay:100, axis:'y'}}>
-    <p in:fly={{duration:200, delay:350, x:-500}} out:fly={{duration:400, delay:0, x:-500}}>{olimpiadesData.inside}</p>
-    <p in:fly={{duration:200, delay:300, x:-500}} out:fly={{duration:400, delay:50, x:-500}}>{olimpiadesData.inside}</p>
-    <p in:fly={{duration:200, delay:250, x:-500}} out:fly={{duration:400, delay:100, x:-500}}>{olimpiadesData.inside}</p>
-    <p in:fly={{duration:200, delay:200, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.inside}</p>
-</div>
-{/if}
+<div transition:slide={{duration: 1000}} style="display: flex; flex-direction: column;">
+    <button class="block" on:click={() => open=!open}>
+        <h2>{olimpiadesData.title}</h2>
+    </button>
+    {#if open}
+    <div class="inside" transition:slide={{duration:300, delay:100, axis:'y'}} >
+        <p in:fly={{duration:200, delay:350, x:-500}} out:fly={{duration:400, delay:0, x:-500}}>{olimpiadesData.inside}</p>
+        <p in:fly={{duration:200, delay:300, x:-500}} out:fly={{duration:400, delay:50, x:-500}}>{olimpiadesData.inside}</p>
+        <p in:fly={{duration:200, delay:250, x:-500}} out:fly={{duration:400, delay:100, x:-500}}>{olimpiadesData.inside}</p>
+        <p in:fly={{duration:200, delay:200, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.inside}</p>
+    </div>
+    {/if}
+    
 </div>

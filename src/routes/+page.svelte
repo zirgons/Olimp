@@ -1,12 +1,18 @@
 <script>
     import OlimpiadesButton from './OlimpiadesButton.svelte';
 
-    let data = [{title: "yup yup", inside: "Some cool data\nSome other cool data\nAnd some more cool data"},
-    {title: "Maybe?", inside: "Ajjj"}]
+    const data = [{title: "yup yup", inside: "Some cool data\nSome other cool data\nAnd some more cool data"},
+    {title: "Maybe?", inside: "Ajjj"},
+    {title: "Maybe 2?", inside: "Ajjj2"}]
+    let search = '';
+
 </script>
 
 
+<input bind:value={search}>
 
 {#each data as dt}
-<OlimpiadesButton olimpiadesData={dt}></OlimpiadesButton>
+    {#if dt.title.toLowerCase().includes(search.toLowerCase())}
+        <OlimpiadesButton olimpiadesData={dt}></OlimpiadesButton>
+    {/if}
 {/each}
