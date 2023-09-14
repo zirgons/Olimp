@@ -2,8 +2,25 @@
 	import { slide, fly, fade } from 'svelte/transition';
     
 
-	export let olimpiadesData = {"title": "title", "inside": "inside"};
+	export let olimpiadesData = {
+	name: "",
+	subject: "",
+	startingTime: new Date(),
+	signingTime: null,
+	place: "",
+	organizer: "",
+	organizersWebsite: "",
+	signUpPage: null,
+	classes: ""
+};
     let open = false;
+
+    function styleDate(date){
+		let year = date.getFullYear();
+		let month = date.getMonth()+1;
+		let day = date.getDate();
+		return `${day}.${month}.${year}`
+	}
 </script>
 
 <style lang=scss>
@@ -47,16 +64,16 @@
 </style>
 
 
-<div transition:slide={{duration: 1000}} style="display: flex; flex-direction: column;">
-    <button class="block" on:click={() => open=!open}>
-        <h2>{olimpiadesData.title}</h2>
+<div style="display: flex; flex-direction: column;">
+    <button transition:slide|global={{duration: 300, delay: 100}}  class="block" on:click={() => open=!open}>
+        <h2>{olimpiadesData.name}</h2>
     </button>
     {#if open}
-    <div class="inside" transition:slide={{duration:300, delay:100, axis:'y'}} >
-        <p in:fly={{duration:200, delay:350, x:-500}} out:fly={{duration:400, delay:0, x:-500}}>{olimpiadesData.inside}</p>
-        <p in:fly={{duration:200, delay:300, x:-500}} out:fly={{duration:400, delay:50, x:-500}}>{olimpiadesData.inside}</p>
-        <p in:fly={{duration:200, delay:250, x:-500}} out:fly={{duration:400, delay:100, x:-500}}>{olimpiadesData.inside}</p>
-        <p in:fly={{duration:200, delay:200, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.inside}</p>
+    <div class="inside" transition:slide|global={{duration:300, delay:100, axis:'y'}} >
+        <p in:fly={{duration:200, delay:350, x:-500}} out:fly={{duration:400, delay:0, x:-500}}>{olimpiadesData.subject}</p>
+        <p in:fly={{duration:200, delay:300, x:-500}} out:fly={{duration:400, delay:50, x:-500}}>{styleDate(olimpiadesData.startingTime)}</p>
+        <p in:fly={{duration:200, delay:250, x:-500}} out:fly={{duration:400, delay:100, x:-500}}>{olimpiadesData.place}</p>
+        <p in:fly={{duration:200, delay:200, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.classes}</p>
     </div>
     {/if}
     
