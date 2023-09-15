@@ -13,7 +13,7 @@
     }
     .block{
         &:hover{
-            background-color: #6b4141;
+            background-color: #979797;
         }
         @include start;    
         width: 100%;
