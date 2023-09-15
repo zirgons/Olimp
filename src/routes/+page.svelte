@@ -3,15 +3,43 @@
     import OlimpiadesButton from './OlimpiadesButton.svelte';
     import {olimpiadesData} from './olimpiadesData.js';
     import { slide } from 'svelte/transition';
+
+    import Filter from '../lib/Filter.svelte'
+
     olimpiadesData.sort(function(a,b){
 		  return new Date(a.startingTime).valueOf() - new Date(b.startingTime).valueOf();
 	});
+
+
+    const unique = (rs) => {
+                return Array.from(new Set(rs))
+    }
+
+    let filter = { subjects: [], classes: [] }
+
+    const filterMatch = (filter, entry) => {
+        if (filter.subjects.length && ! filter.subjects.includes(entry.subject)) return false
+        if (filter.classes.length && ! filter.classes.includes(entry.classes)) return false
+        return true
+    }
+
+    const subjects = unique(olimpiadesData.map(o => o.subject))
+    const classes = unique(olimpiadesData.map(o => o.classes))
+
+    const setFilter = (k, v) => {
+        filter[k] = v
+    }
+
+
     let months = {};
     let search = '';
     let sortedMonths;
     $: {
         let months = {};
         olimpiadesData.forEach((e) => {
+
+            if ( ! filterMatch(filter, e)) return 
+
             if(!e.name.toLowerCase().includes(search.toLowerCase())){
                 return;
             }
@@ -26,11 +54,6 @@
         });
         console.log(sortedMonths);
     }
-
-    let data = [{title: "yup yup", inside: "Some cool data\nSome other cool data\nAnd some more cool data"},
-    {title: "Maybe?", inside: "Ajjj"},
-    {title: "Baba buji", inside: "Lets goo"}]
-
 </script>
 
 <style>
@@ -50,9 +73,13 @@
 
 <input bind:value={search}>
 
+<Filter values={subjects} selected={filter.subjects} onchange={(s) => setFilter('subjects', s)} />
+<Filter values={classes} selected={filter.classes} onchange={(s) => setFilter('classes', s)} />
+<br>
+
 {#each sortedMonths as month (month[0].startingTime.getFullYear() +". gada "+ month[0].startingTime.toLocaleString('lv', { month: 'long' }))}
 
-    <div class='month' >
+    <div class='month' transition:slide={{duration: 100, axis: 'x'}}>
         <h2 transition:slide={{duration: 200}}>{month[0].startingTime.getFullYear() +". gada "+ month[0].startingTime.toLocaleString('lv', { month: 'long' })}</h2>
         <div class='olimpiades'>
             {#each month as data (data.name)}
