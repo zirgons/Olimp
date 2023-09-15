@@ -30,7 +30,6 @@
         filter[k] = v
     }
 
-
     let months = {};
     let search = '';
     let sortedMonths;
@@ -44,15 +43,13 @@
                 return;
             }
                 
-            let startingMonth = e.startingTime.getMonth();
-            let startingYear = e.startingTime.getFullYear();
-            if(!months[startingMonth+startingYear]) months[startingMonth+startingYear] = [];
-            months[startingMonth+startingYear].push(e);
+            let key = e.startingTime.getMonth()+e.startingTime.getFullYear();
+            if(!months[key]) months[key] = [];
+            months[key].push(e);
         })
         sortedMonths = Object.values(months).sort(function(a,b){
             return new Date(a[0].startingTime).valueOf() - new Date(b[0].startingTime).valueOf();
         });
-        console.log(sortedMonths);
     }
 </script>
 
@@ -87,5 +84,4 @@
             {/each}
         </div>
     </div>
-    
 {/each}
