@@ -10,11 +10,6 @@
 		  return new Date(a.startingTime).valueOf() - new Date(b.startingTime).valueOf();
 	});
 
-
-    const unique = (rs) => {
-                return Array.from(new Set(rs))
-    }
-
     let filter = { subjects: [], classes: [] }
 
     const filterMatch = (filter, entry) => {
@@ -22,14 +17,7 @@
         if (filter.classes.length && ! filter.classes.includes(entry.classes)) return false
         return true
     }
-
-    const subjects = unique(olimpiadesData.map(o => o.subject))
-    const classes = unique(olimpiadesData.map(o => o.classes))
-
-    const setFilter = (k, v) => {
-        filter[k] = v
-    }
-
+    
     let months = {};
     let search = '';
     let sortedMonths;
@@ -70,8 +58,8 @@
 
 <input bind:value={search}>
 
-<Filter values={subjects} selected={filter.subjects} onchange={(s) => setFilter('subjects', s)} />
-<Filter values={classes} selected={filter.classes} onchange={(s) => setFilter('classes', s)} />
+<Filter values={olimpiadesData} bind:filteredData={filter.subjects} filter='subject' />
+<Filter values={olimpiadesData} bind:filteredData={filter.classes} filter='classes' />
 <br>
 
 {#each sortedMonths as month (month[0].startingTime.getFullYear() +". gada "+ month[0].startingTime.toLocaleString('lv', { month: 'long' }))}
