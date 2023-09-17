@@ -1,10 +1,12 @@
 
 <script>
-    import OlimpiadesButton from './OlimpiadesButton.svelte';
+    import OlimpiadesButton from '$lib/OlimpiadesButton.svelte';
+    import Filter from '$lib/Filter.svelte';
+    
     import {olimpiadesData} from './olimpiadesData.js';
     import { slide } from 'svelte/transition';
 
-    import Filter from '../lib/Filter.svelte'
+    
 
     olimpiadesData.sort(function(a,b){
 		  return new Date(a.startingTime).valueOf() - new Date(b.startingTime).valueOf();
