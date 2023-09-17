@@ -26,7 +26,7 @@
     }
 </script>
 <svelte:window on:click={(event) =>{
-    if(!event.target.classList.contains('flt-item') && !event.target.classList.contains(name)){
+    if(!event.target.classList.contains('flt-item') && !event.target.classList.contains('dropdown-content') && !event.target.classList.contains(name)){
         open=false;
     }
 }} />
