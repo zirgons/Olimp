@@ -32,6 +32,7 @@
     .block{
         &:hover{
             background-color: #979797;
+            cursor: pointer;
         }
         @include start;    
         width: 100%;

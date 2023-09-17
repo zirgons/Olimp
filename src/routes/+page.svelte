@@ -43,26 +43,64 @@
     }
 </script>
 
-<style>
+<style lang='scss'>
     .month{
         display: flex ;
         flex-direction: column;
         background-color: rgb(236, 236, 236);
-        margin-top: 10px;
         padding: 10px;
         border-radius: 10px;
+        margin: 15px;
     }
     .olimpiades{
         padding-left: 30px;
         padding-right: 30px;
+        
     }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+        width: 100%;
+        height: 48px;
+    }
+
+    li {
+        float: left;
+        border-right: 2px solid #333;
+    }
+
+    li p{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        margin: 0px;
+        
+    }
+    li input {
+        margin-top: 10px;
+        height: 30px;
+        background-color:#6e6e6e;
+        text-align: left;
+        border:none;
+    }
+
+    li:last-child {
+        border-right: none;
+    }
+
+    :global(body) { margin: 0; padding: 0; }
 </style>
 
-<input bind:value={search}>
-
-<Filter values={olimpiadesData} bind:filteredData={filter.subjects} filter='subject' />
-<Filter values={olimpiadesData} bind:filteredData={filter.classes} filter='classes' />
-<br>
+<ul>
+    <li><p>Olimpiades</p></li>
+    <li><input bind:value={search}></li>
+    <li><Filter values={olimpiadesData} bind:filteredData={filter.subjects} filter='subject' name="Priekšmeti"/></li>
+    <li><Filter values={olimpiadesData} bind:filteredData={filter.classes} filter='classes' name="Klases"/></li>
+</ul>
 
 {#each sortedMonths as month (month[0].startingTime.getFullYear() +". gada "+ month[0].startingTime.toLocaleString('lv', { month: 'long' }))}
 
