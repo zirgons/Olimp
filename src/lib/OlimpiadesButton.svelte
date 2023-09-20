@@ -51,7 +51,7 @@
     .inside{
         @include start;
         overflow: hidden;
-        display: flex;
+        //display: flex;
         box-sizing: border-box;
         width: 98%;
         margin: auto;
@@ -64,6 +64,11 @@
         border-radius: 0px 0px 10px 10px;
         border-width: 0px 2px 2px 2px;
         justify-content: space-evenly;
+        & p{
+            padding-left:50px;
+            display: inline-block;
+        }
+
     }
     
 </style>
@@ -74,11 +79,14 @@
         <h2>{olimpiadesData.name}</h2>
     </button>
     {#if open}
-    <div class="inside" transition:slide|global={{duration:300, delay:100, axis:'y'}} >
-        <p in:fly={{duration:200, delay:350, x:-500}} out:fly={{duration:400, delay:0, x:-500}}>{olimpiadesData.subject}</p>
-        <p in:fly={{duration:200, delay:300, x:-500}} out:fly={{duration:400, delay:50, x:-500}}>{styleDate(olimpiadesData.startingTime)}</p>
-        <p in:fly={{duration:200, delay:250, x:-500}} out:fly={{duration:400, delay:100, x:-500}}>{olimpiadesData.place}</p>
-        <p in:fly={{duration:200, delay:200, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.classes}</p>
+    <div class="inside" transition:slide={{duration:300, delay:100, axis:'y'}} >
+        <p in:fly={{duration:200, delay:200, x:-500}} out:fly={{duration:400, delay:0, x:-500}}>{olimpiadesData.subject}</p>
+        <p in:fly={{duration:200, delay:250, x:-500}} out:fly={{duration:400, delay:50, x:-500}}>{styleDate(olimpiadesData.startingTime)}</p>
+        <p in:fly={{duration:200, delay:300, x:-500}} out:fly={{duration:400, delay:100, x:-500}}>{olimpiadesData.place}</p>
+        <p in:fly={{duration:200, delay:350, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.classes}</p>
+        <br>
+        <br>
+        <p in:fly={{duration:200, delay:400, x:-500}} out:fly={{duration:400, delay:150, x:-500}}>{olimpiadesData.organizer}</p>
     </div>
     {/if}
     

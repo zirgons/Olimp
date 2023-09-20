@@ -24,7 +24,6 @@
     let search = '';
     let sortedMonths;
     $: {
-        let months = {};
         olimpiadesData.forEach((e) => {
 
             if ( ! filterMatch(filter, e)) return 
@@ -69,28 +68,27 @@
     li {
         float: left;
         border-right: 2px solid #333;
+
+        &.p{
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin: 0px;
+        }
+        &:last-child{
+            border-right: none;
+        }
+        & input{
+            margin-top: 10px;
+            height: 30px;
+            background-color:#6e6e6e;
+            text-align: left;
+            border:none;
+        }
     }
 
-    li p{
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        margin: 0px;
-        
-    }
-    li input {
-        margin-top: 10px;
-        height: 30px;
-        background-color:#6e6e6e;
-        text-align: left;
-        border:none;
-    }
-
-    li:last-child {
-        border-right: none;
-    }
 
     :global(body) { margin: 0; padding: 0; }
 </style>
@@ -104,7 +102,7 @@
 
 {#each sortedMonths as month (month[0].startingTime.getFullYear() +". gada "+ month[0].startingTime.toLocaleString('lv', { month: 'long' }))}
 
-    <div class='month' transition:slide={{duration: 100, axis: 'x'}}>
+    <div class='month' transition:slide={{duration: 200, axis: 'x'}}>
         <h2 transition:slide={{duration: 200}}>{month[0].startingTime.getFullYear() +". gada "+ month[0].startingTime.toLocaleString('lv', { month: 'long' })}</h2>
         <div class='olimpiades'>
             {#each month as data (data.name)}

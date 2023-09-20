@@ -25,11 +25,13 @@
         filteredData = v
     }
 </script>
+
 <svelte:window on:click={(event) =>{
     if(!event.target.classList.contains('flt-item') && !event.target.classList.contains('dropdown-content') && !event.target.classList.contains(name)){
         open=false;
     }
 }} />
+
 <div>
     <button on:click={()=>{ open = !open}} class="dropbtn {name}">{open ? "▲" : "▼"}{name}</button>
     {#if open}
@@ -48,15 +50,16 @@
     {/if}
 </div>
 
-<style>
+<style lang="scss">
     .flt-item {
         all: initial;
         cursor: pointer;
         position: relative;
         padding:1px;
-    }
-    .flt-item.--selected {
-        font-weight: bold;
+
+        &.--selected {
+            font-weight: bold;
+        }
     }
     .dropdown-content {
         display: flex ;
