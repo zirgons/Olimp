@@ -24,6 +24,7 @@
     let search = '';
     let sortedMonths;
     $: {
+        let months = {};
         olimpiadesData.forEach((e) => {
 
             if ( ! filterMatch(filter, e)) return 
